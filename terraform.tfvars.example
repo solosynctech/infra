@@ -1,0 +1,42 @@
+# Example Terraform Variables
+# Copy this file to terraform.tfvars and customize for your environment
+
+# General Configuration
+aws_region   = "us-east-1"
+environment  = "dev"
+project_name = "my-project"
+
+# VPC Configuration
+vpc_cidr             = "10.0.0.0/16"
+availability_zones   = ["us-east-1a", "us-east-1b"]
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+
+enable_nat_gateway = true
+single_nat_gateway = false  # Set to true to save costs in dev
+
+# Route53 Configuration (optional)
+# domain_name = "example.com"
+# route53_a_records = {
+#   "www" = {
+#     ttl     = 300
+#     records = ["192.0.2.1"]
+#   }
+# }
+
+# EKS Configuration (optional)
+# eks_cluster_version = "1.28"
+# eks_node_groups = {
+#   default = {
+#     desired_size               = 2
+#     max_size                   = 4
+#     min_size                   = 1
+#     instance_types             = ["t3.medium"]
+#     capacity_type              = "ON_DEMAND"
+#     disk_size                  = 20
+#     labels                     = {}
+#     taints                     = []
+#     max_unavailable_percentage = 33
+#     tags                       = {}
+#   }
+# }
