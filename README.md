@@ -184,7 +184,7 @@ module "lambda" {
 
   function_name = "my-function"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   filename      = "${path.module}/lambda/function.zip"
   
   timeout     = 10
@@ -366,7 +366,7 @@ For team collaboration, configure remote state storage with S3 and DynamoDB:
      
      function_name = "my-function"
      handler       = "index.handler"
-     runtime       = "nodejs18.x"
+     runtime       = "nodejs20.x"
      filename      = "${path.module}/lambda/function.zip"
    }
    ```

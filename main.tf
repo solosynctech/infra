@@ -76,7 +76,7 @@ module "vpc" {
 #   function_name = "${var.project_name}-${var.environment}-function"
 #   description   = "Example Lambda function"
 #   handler       = "index.handler"
-#   runtime       = "nodejs18.x"
+#   runtime       = "nodejs20.x"
 #   filename      = "${path.module}/lambda/function.zip"
 #
 #   timeout     = 10

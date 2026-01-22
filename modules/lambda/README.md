@@ -26,7 +26,7 @@ module "lambda" {
   function_name = "my-function"
   description   = "My Lambda function"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   filename      = "${path.module}/lambda/my-function.zip"
   
   timeout     = 10
@@ -70,7 +70,7 @@ module "lambda" {
 
   function_name = "vpc-lambda"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   filename      = "${path.module}/lambda/function.zip"
   
   vpc_config = {
@@ -92,7 +92,7 @@ module "lambda" {
 
   function_name = "api-function"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   filename      = "${path.module}/lambda/api.zip"
   
   create_function_url   = true
@@ -114,7 +114,7 @@ module "lambda" {
 | function_name | Name of the Lambda function | `string` | n/a | yes |
 | description | Description of the Lambda function | `string` | `""` | no |
 | handler | Lambda function handler | `string` | `"index.handler"` | no |
-| runtime | Lambda runtime | `string` | `"nodejs18.x"` | no |
+| runtime | Lambda runtime | `string` | `"nodejs20.x"` | no |
 | timeout | Lambda timeout in seconds | `number` | `3` | no |
 | memory_size | Lambda memory size in MB | `number` | `128` | no |
 | filename | Path to deployment package | `string` | `null` | no |

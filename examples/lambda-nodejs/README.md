@@ -28,7 +28,7 @@ module "api_lambda" {
 
   function_name = "api-function"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   filename      = "${path.module}/examples/lambda-nodejs/function.zip"
   
   timeout     = 10

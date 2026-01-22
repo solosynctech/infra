@@ -91,7 +91,7 @@ module "api_lambda" {
   function_name = "${var.project_name}-${var.environment}-api"
   description   = "API Lambda function"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
 
   # You need to create this zip file
   # See examples/lambda-nodejs for sample code
