@@ -6,8 +6,11 @@ resource "aws_route53_zone" "main" {
   count = var.create_zone ? 1 : 0
   name  = var.domain_name
 
-  vpc {
-    vpc_id = var.vpc_id
+  dynamic "vpc" {
+    for_each = var.vpc_id != null && var.private_zone ? [1] : []
+    content {
+      vpc_id = var.vpc_id
+    }
   }
 
   force_destroy = var.force_destroy
