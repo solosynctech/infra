@@ -115,11 +115,11 @@ resource "aws_lambda_function_url" "this" {
 
 # Lambda permission for function URL
 resource "aws_lambda_permission" "function_url" {
-  count         = var.create_function_url ? 1 : 0
-  statement_id  = "FunctionURLAllowPublicAccess"
-  action        = "lambda:InvokeFunctionUrl"
-  function_name = aws_lambda_function.this.function_name
-  principal     = "*"
+  count                  = var.create_function_url ? 1 : 0
+  statement_id           = "FunctionURLAllowPublicAccess"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.this.function_name
+  principal              = "*"
   function_url_auth_type = var.function_url_auth_type
 }
 

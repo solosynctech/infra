@@ -52,14 +52,14 @@ variable "kms_key_arn" {
 variable "node_groups" {
   description = "Map of node group configurations"
   type = map(object({
-    desired_size               = number
-    max_size                   = number
-    min_size                   = number
-    instance_types             = list(string)
-    capacity_type              = string
-    disk_size                  = number
-    labels                     = map(string)
-    taints                     = list(object({
+    desired_size   = number
+    max_size       = number
+    min_size       = number
+    instance_types = list(string)
+    capacity_type  = string
+    disk_size      = number
+    labels         = map(string)
+    taints = list(object({
       key    = string
       value  = string
       effect = string

@@ -53,11 +53,11 @@ module "route53" {
   a_records = {
     "www" = {
       ttl     = 300
-      records = ["192.0.2.1"]  # Replace with your actual IP
+      records = ["192.0.2.1"] # Replace with your actual IP
     }
     "api" = {
       ttl     = 300
-      records = ["192.0.2.2"]  # Replace with your actual IP
+      records = ["192.0.2.2"] # Replace with your actual IP
     }
   }
 
@@ -92,7 +92,7 @@ module "api_lambda" {
   description   = "API Lambda function"
   handler       = "index.handler"
   runtime       = "nodejs18.x"
-  
+
   # You need to create this zip file
   # See examples/lambda-nodejs for sample code
   filename = var.lambda_filename
@@ -138,12 +138,12 @@ module "eks" {
 
   node_groups = {
     general = {
-      desired_size               = var.eks_node_desired_size
-      max_size                   = var.eks_node_max_size
-      min_size                   = var.eks_node_min_size
-      instance_types             = var.eks_node_instance_types
-      capacity_type              = "ON_DEMAND"
-      disk_size                  = 30
+      desired_size   = var.eks_node_desired_size
+      max_size       = var.eks_node_max_size
+      min_size       = var.eks_node_min_size
+      instance_types = var.eks_node_instance_types
+      capacity_type  = "ON_DEMAND"
+      disk_size      = 30
       labels = {
         role = "general"
       }

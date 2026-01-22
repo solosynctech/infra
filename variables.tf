@@ -87,14 +87,14 @@ variable "eks_cluster_version" {
 variable "eks_node_groups" {
   description = "EKS node group configurations"
   type = map(object({
-    desired_size               = number
-    max_size                   = number
-    min_size                   = number
-    instance_types             = list(string)
-    capacity_type              = string
-    disk_size                  = number
-    labels                     = map(string)
-    taints                     = list(object({
+    desired_size   = number
+    max_size       = number
+    min_size       = number
+    instance_types = list(string)
+    capacity_type  = string
+    disk_size      = number
+    labels         = map(string)
+    taints = list(object({
       key    = string
       value  = string
       effect = string
