@@ -43,7 +43,18 @@ def handler(event, context):
             })
         }
     elif path == '/api/data' and method == 'POST':
-        body = json.loads(event.get('body', '{}'))
+        try:
+            body = json.loads(event.get('body', '{}'))
+        except json.JSONDecodeError:
+            return {
+                'statusCode': 400,
+                'headers': {
+                    'Content-Type': 'application/json',
+                },
+                'body': json.dumps({
+                    'error': 'Invalid JSON in request body'
+                })
+            }
         
         response = {
             'statusCode': 201,

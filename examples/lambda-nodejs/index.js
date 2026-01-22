@@ -40,7 +40,20 @@ exports.handler = async (event) => {
             })
         };
     } else if (path === '/api/data' && method === 'POST') {
-        const body = event.body ? JSON.parse(event.body) : {};
+        let body = {};
+        try {
+            body = event.body ? JSON.parse(event.body) : {};
+        } catch (error) {
+            return {
+                statusCode: 400,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    error: 'Invalid JSON in request body'
+                })
+            };
+        }
         
         response = {
             statusCode: 201,
