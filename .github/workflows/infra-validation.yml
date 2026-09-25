@@ -6,4 +6,4 @@ jobs:
   steps:
    - uses: actions/checkout@v4
    - name: Validate compose
-     run: docker compose -f solosync/docker-compose.prod.yml config
+     run: docker compose -f solosync/docker-compose.prod.yml -f solosync/waha-compose.yml config
