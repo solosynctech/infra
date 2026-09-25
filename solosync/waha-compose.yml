@@ -1,6 +1,6 @@
 services:
   waha:
-    image: ${WAHA_IMAGE}
+    image: ${WAHA_IMAGE:-devlikeapro/waha:2026.9.1}
     restart: unless-stopped
     environment:
       WAHA_API_KEY: ${WAHA_API_KEY}
