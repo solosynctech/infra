@@ -31,6 +31,7 @@ services:
       NODE_ENV: production
       PORT: 4000
       API_BASE_URL: https://api.solosync.live
+      COOKIE_DOMAIN: .solosync.live
       MONGODB_URI: ${MONGODB_URI}
       REDIS_URL: ${REDIS_URL}
       JWT_SECRET: ${JWT_SECRET}
