@@ -49,6 +49,12 @@ cp .env.example .env
 nano .env
 ```
 
+The frontend and backend repositories publish Docker images to GHCR on pushes to `main` and `feat/production-mvp`. If the GHCR packages are private, authenticate the VPS once with a GitHub token that has package read access:
+
+```bash
+echo "$GHCR_READ_TOKEN" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+```
+
 Set all secrets before starting:
 
 ```env
