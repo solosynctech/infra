@@ -1,0 +1,30 @@
+# Example Terraform Variables
+# Copy this file to terraform.tfvars and customize
+
+# General
+aws_region   = "us-east-1"
+environment  = "dev"
+project_name = "my-project"
+
+# VPC
+vpc_cidr             = "10.0.0.0/16"
+availability_zones   = ["us-east-1a", "us-east-1b"]
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+
+enable_nat_gateway = true
+single_nat_gateway = true  # Set to true to save costs
+
+# Route53
+domain_name         = "example.com"
+create_route53_zone = false  # Set to true to create a new hosted zone
+
+# Lambda
+lambda_filename = "../lambda-nodejs/function.zip"  # Path to your Lambda zip
+
+# EKS
+eks_cluster_version     = "1.28"
+eks_node_desired_size   = 2
+eks_node_min_size       = 1
+eks_node_max_size       = 4
+eks_node_instance_types = ["t3.medium"]
