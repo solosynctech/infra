@@ -1,0 +1,73 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - homepage
+      - frontend
+      - backend
+
+  homepage:
+    image: ${HOME_IMAGE}
+    restart: unless-stopped
+
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    image: ${BACKEND_IMAGE}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      API_BASE_URL: https://api.solosync.live
+      COOKIE_DOMAIN: .solosync.live
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_URL: ${REDIS_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      FRONTEND_ORIGIN: https://app.solosync.live
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_REDIRECT_URI: https://api.solosync.live/api/auth/google/callback
+      WAHA_URL: http://waha:3000
+      WAHA_API_KEY: ${WAHA_API_KEY}
+      WAHA_WEBHOOK_URL: http://backend:4000/webhooks/waha
+      WAHA_WEBHOOK_HMAC_KEY: ${WAHA_WEBHOOK_HMAC_KEY}
+      BILLING_ENABLED: ${BILLING_ENABLED}
+      ACTIVATION_FEE_PAISE: "39900"
+      MESSAGE_FEE_PAISE: "10"
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET}
+      RAZORPAY_WEBHOOK_SECRET: ${RAZORPAY_WEBHOOK_SECRET}
+      RAZORPAY_CURRENCY: INR
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    depends_on:
+      - waha
+
+  waha:
+    image: ${WAHA_IMAGE:-devlikeapro/waha:2026.9.1}
+    restart: unless-stopped
+    environment:
+      WAHA_API_KEY: ${WAHA_API_KEY}
+      WAHA_PRINT_QR: "false"
+      WAHA_DASHBOARD_ENABLED: "false"
+      WHATSAPP_RESTART_ALL_SESSIONS: "true"
+      WAHA_WORKER_ID: waha1
+    volumes:
+      - waha_sessions:/app/.sessions
+
+volumes:
+  waha_sessions:
+  caddy_data:
+  caddy_config:

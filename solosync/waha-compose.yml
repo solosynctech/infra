@@ -1,0 +1,14 @@
+services:
+  waha:
+    image: ${WAHA_IMAGE:-devlikeapro/waha:2026.9.1}
+    restart: unless-stopped
+    environment:
+      WAHA_API_KEY: ${WAHA_API_KEY}
+      WAHA_PRINT_QR: "false"
+      WAHA_DASHBOARD_ENABLED: "false"
+      WHATSAPP_RESTART_ALL_SESSIONS: "true"
+      WAHA_WORKER_ID: waha1
+    volumes:
+      - waha_sessions:/app/.sessions
+volumes:
+  waha_sessions:
