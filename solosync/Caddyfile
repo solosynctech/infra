@@ -1,0 +1,11 @@
+solosync.live, www.solosync.live {
+  reverse_proxy homepage:80
+}
+
+app.solosync.live {
+  reverse_proxy frontend:80
+}
+
+api.solosync.live {
+  reverse_proxy backend:4000
+}
